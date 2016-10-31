@@ -2,6 +2,7 @@ var path = require('path');
 
 module.exports = function (config) {
   config.set({
+    basePath:'../',
     browsers: ['PhantomJS2'],
     coverageReporter: {
       reporters: [
@@ -24,11 +25,11 @@ module.exports = function (config) {
       'jasmine',
     ],
     preprocessors: {
-      '../test/tests.bundle.js': ['jshint', 'webpack', 'sourcemap'],
+      'test/tests.bundle.js': ['jshint', 'webpack', 'sourcemap'],
     },
     reporters: ['spec', 'coverage'],
     jshintPreprocessor: {
-      jshintrc: '../.jshintrc'
+      jshintrc: '.jshintrc'
     },
     webpack: {
       cache: true,
