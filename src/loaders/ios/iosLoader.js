@@ -19,11 +19,3 @@ class IOSLoader{
 }
 
 module.exports = IOSLoader;
-
-
-
-
-
-
-
-

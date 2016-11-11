@@ -42,7 +42,15 @@ class textureDict extends dLinkedList{
       this.push(new ListObj(key,resName,texture));
     });
   }
-  removeResTextures(resources){
+  //TODO resObj needs to be set
+  addTextureArr(key,resObj) {
+    resources.forEach((resource)=>{
+      let resName = utils.getNameFromResObj(resource);
+      let texture = this.getTexture(resource);
+      this.push(new ListObj(key,resName,texture));
+    });
+  }
+  removeResTextureArr(resources){
     resources.forEach((res) => {
       let resName = utils.getNameFromResObj(res);
       this.removeResTextureByName(name);
