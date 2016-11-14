@@ -28,12 +28,9 @@ module.exports = function (config) {
       'jasmine',
     ],
     preprocessors: {
-      'test/tests.bundle.js': ['jshint', 'webpack', 'sourcemap'],
+      'test/tests.bundle.js': ['webpack', 'sourcemap'],
     },
     reporters: ['spec', 'coverage'],
-    jshintPreprocessor: {
-      jshintrc: '.jshintrc'
-    },
     webpack: {
       cache: true,
       devtool: 'inline-source-map',

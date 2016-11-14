@@ -1,5 +1,5 @@
 let utils = {
-  getNameFromResObj : () => {
+  getNameFromResObj : (str) => {
     if(str){
       let arr = str.split('/');
       arr = arr[arr.length-1].split('.');
