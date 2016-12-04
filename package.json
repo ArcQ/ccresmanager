@@ -13,9 +13,9 @@
     "dist": "npm run test:dist && rimraf dist && NODE_ENV=dist webpack --config ./config/webpack.config.js",
     "release": "sh ./bin/release.sh",
     "test:dist": "NODE_ENV=dist karma start --single-run --no-auto-watch config/karma.conf.js",
-    "preversion": "git checkout master && git merge develop && npm run test:dist",
-    "version": "npm run build:dist",
-    "postversion": "git add -A && git push --tags && git push origin master && npm publish "
+    "preversion": "git checkout master && git merge develop",
+    "version": "npm run dist",
+    "postversion": "git add -A && git push --tags && git push origin master && npm publish generated/dist"
   },
   "watch": {
     "build": "{src,test}/*.js"
