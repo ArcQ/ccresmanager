@@ -18,8 +18,12 @@ var config = {
     ]
   },
   resolve: {
-    extensions: ['', '.js']
-  },
+    extensions: ['', '.js', '.jsx'],
+    root: path.resolve(__dirname, root),
+    modulesDirectories: [
+      'node_modules',
+    ],
+  }
 };
 
 if(process.env.NODE_ENV==='dev'){

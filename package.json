@@ -9,13 +9,14 @@
   },
   "scripts": {
     "start": "rimraf build && NODE_ENV=dev NODE_ENV=dev webpack --watch --config ./config/webpack.config.js",
+    "lint": "node node_modules/eslint/bin/eslint.js .",
     "test": "NODE_ENV=dev karma start ./config/karma.conf.js",
     "dist": "npm run test:dist && rimraf dist && NODE_ENV=dist webpack --config ./config/webpack.config.js",
     "release": "sh ./bin/release.sh",
-    "test:dist": "karma start --single-run --no-auto-watch config/karma.conf.js",
-    "preversion": "git checkout master && git merge develop && npm run test:dist",
-    "version": "npm run build:dist",
-    "postversion": "git add -A && git push --tags && git push origin master && npm publish "
+    "test:dist": "NODE_ENV=dist karma start --single-run --no-auto-watch config/karma.conf.js",
+    "preversion": "git checkout master && git merge develop",
+    "version": "npm run dist",
+    "postversion": "git add -A && git push --tags && git push origin master && npm publish generated/dist"
   },
   "watch": {
     "build": "{src,test}/*.js"
@@ -35,6 +36,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.4.0",
+    "babel-eslint": "^7.1.1",
     "babel-istanbul": "^0.6.0",
     "babel-istanbul-loader": "0.0.1",
     "babel-loader": "^6.2.1",
@@ -42,7 +44,12 @@
     "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.3.13",
     "cc2dhtml5": "^3.9.0",
-    "cctestutils": "^1.0.1",
+    "cctestutils": "^1.0.2",
+    "eslint": "^3.11.1",
+    "eslint-config-airbnb-base": "^10.0.1",
+    "eslint-import-resolver-webpack": "^0.7.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jasmine": "^2.2.0",
     "jasmine-core": "^2.4.1",
     "jasmine-spec-reporter": "^2.7.0",
     "karma": "^0.13.19",
@@ -55,7 +62,11 @@
     "karma-webpack": "^1.7.0",
     "loader-utils": "^0.2.12",
     "rimraf": "^2.5.0",
+    "sinon": "^1.17.6",
     "wait-until-promise": "^1.0.0",
     "webpack": "^1.12.11"
+  },
+  "dependencies": {
+    "cctestutils": "^1.0.6"
   }
 }
