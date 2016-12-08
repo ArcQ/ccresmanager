@@ -1,5 +1,9 @@
 let utils = require('../utils.js');
 
+function _create(ctrl, resource){
+  return jsb.reflection.callStaticMethod(CGLoad, createUIImage, resource);
+}
+
 class IOSLoader{
   constructor(){
     this.percentResLoaded = 0;
@@ -9,12 +13,12 @@ class IOSLoader{
   }
   load(ctrl,key,resources,onUpdate,onFinish){
     resources.forEach((resource)=>{
-      var resName = utils.getNameFromResObj(resources[i]);
-      var texture = cc.UIImageToTextureConverter.create(resName);     
-      var listObj = {name:resName,key:key,texture:texture};
-      this.textureDict.push(listObj);
+      this.textureDict.addTexture(this.create(ctrl,resources[i]));
     });
     onFinish.call(ctrl);
+  }
+  iOSModel.prototype.create = function(ctrl,resource){
+    return jsb.reflection.callStaticMethod(CGLoad, createUIImage, resource);
   }
 }
 

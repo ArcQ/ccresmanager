@@ -1,8 +1,10 @@
-const textureDict = require('../loaders/ios/textureDict/textureDict.js');
+const textureDict = require('./texture-dict/texture-dict.js');
 
-let test = textureDict;
+let Manager = {
 
-module.exports = ListObj;
+};
+
+module.exports = Manager;
 // let resloaderctrl = require('./resloaderctrl.es6');
 // let texturedict = require('./texturedict.es6'); 
 // let resmanager = {

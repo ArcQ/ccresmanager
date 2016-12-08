@@ -1,18 +1,18 @@
-const listObj = require('./listObj.js');
-const dLinkedList = require('dlinkedlist');
+const ListObj = require('listobj.js');
+const DLinkedList = require('dlinkedlist');
 const utils = require('../../../utils/utils.js');
 const logger = require('../../../errors/logger.js');
 
-let findByName = function(node){
-  return (node.obj.name == resName);
-};
+function _findByName(node) {
+  return (node.obj.name === resName);
+}
 
-let resetTextureDict = function(tDict){
-  tDict = new textureDict();
-};
+function _resetTextureDict(tDict){
+  // tDict.applyToEveryNode(node => nodej
+}
 
 let removeResTextureByName = function(resName){
-  let node = this.findFirst(findByName);
+  let node = this.findFirst(_findByName);
   if(node){
     this.remove(node);
   }
@@ -21,12 +21,12 @@ let removeResTextureByName = function(resName){
   }
 };
 
-class textureDict extends dLinkedList{
+class TextureDict extends DLinkedList{
   constructor(){
     super();
   }
   getTexture(resName){
-    let node = this.findFirst(findByName);
+    let node = this.findFirst(node => (node.obj.name === resName));
     if(node){
       return node.obj.texture;
     }
