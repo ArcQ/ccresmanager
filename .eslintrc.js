@@ -19,10 +19,13 @@ module.exports = {
     "import/resolver": {
       "webpack": { "config": path.join(__dirname, "config/webpack.config.js") }
     },
-    "import/parser": "babel-eslint"
+//    "import/parser": "babel-eslint"
   },
   "plugins": [
     "jasmine",
     "import",
   ],
+  "rules": {
+    "no-underscore-dangle": 0,
+  },
 }
