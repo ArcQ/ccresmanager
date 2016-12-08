@@ -1,12 +1,28 @@
-const textureDict = require('./texture-dict/texture-dict.js');
+const TextureDict = require('./texture-dict/texture-dict.js');
+const Loader = require('../loader/loader.js');
 
-let Manager = {
+const Manager = {
+};
 
+const loadedKeysArr = [];
+
+function _isKeyAdded(key) {
+  if (loadedKeysArr.filter(val => val === key).length > 0) return true;
+  return false;
+}
+
+Manager.loadResources = function (key, resources, isShowAnimation, cb) {
+  if (!_isKeyAdded(key)) {
+    Manager.addkey(key, resources);
+    Loader.loadresources(key, resources, isShowAnimation, cb);
+  } else {
+    cc.warn('Resources for key already added');
+  }
 };
 
 module.exports = Manager;
 // let resloaderctrl = require('./resloaderctrl.es6');
-// let texturedict = require('./texturedict.es6'); 
+// let texturedict = require('./texturedict.es6');
 // let resmanager = {
 //     loaderctrl:null,
 //     texturedict:null,
@@ -14,7 +30,6 @@ module.exports = Manager;
 // };
 //
 // //private
-// resmanager.loadedkeysarr = [];
 // resmanager.texturedict = new texturedict();
 //
 // resmanager.loaderctrl = new resloaderctrl(resmanager.texturedict);
@@ -23,14 +38,6 @@ module.exports = Manager;
 //     resmanager.loadedkeysarr[resmanager.loadedkeysarr.length] = key;
 // };
 //
-// resmanager.iskeyadded = function(key){
-//     for( var i = 0; i < resmanager.loadedkeysarr.length; i++ ) {
-//         if (key == resmanager.loadedkeysarr[i]){
-//             return true;
-//         }
-//     }
-//     return false;
-// };
 //
 // //public
 //
@@ -49,4 +56,3 @@ module.exports = Manager;
 // };
 //
 // window.resmanager = resmanager;
-// module.exports = resmanager;
