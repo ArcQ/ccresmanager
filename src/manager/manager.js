@@ -1,23 +1,30 @@
 const TextureDict = require('./texture-dict/texture-dict.js');
 const Loader = require('../loader/loader.js');
 
-const Manager = {
-};
-
 const loadedKeysArr = [];
+
+let _resDict = new TextureDict();
 
 function _isKeyAdded(key) {
   if (loadedKeysArr.filter(val => val === key).length > 0) return true;
   return false;
 }
 
-Manager.loadResources = function (key, resources, isShowAnimation, cb) {
-  if (!_isKeyAdded(key)) {
-    Manager.addkey(key, resources);
-    Loader.loadresources(key, resources, isShowAnimation, cb);
-  } else {
-    cc.warn('Resources for key already added');
-  }
+const Manager = {
+  loadResources: (key, resources, isShowAnimation, cb) => {
+    if (!_isKeyAdded(key)) {
+      Manager.addkey(key, resources);
+      Loader.loadresources(key, resources, isShowAnimation, cb);
+    } else {
+      cc.warn('Resources for key already added');
+    }
+  },
+  removeAllResources: () => {
+    _resDict = new TextureDict();
+  },
+  removeResTextures: (resources) => {
+    _resDict.removeResTexture(resources);
+  },
 };
 
 module.exports = Manager;

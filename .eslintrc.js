@@ -19,6 +19,7 @@ module.exports = {
     "import/resolver": {
       "webpack": { "config": path.join(__dirname, "config/webpack.config.js") }
     },
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.spec.js"]}]
 //    "import/parser": "babel-eslint"
   },
   "plugins": [
