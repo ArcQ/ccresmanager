@@ -1,3 +1,5 @@
+var path = require('path');
+
 var config = {
   entry: ['./src/Calculator.js'],
   output: {
@@ -6,22 +8,22 @@ var config = {
     'library': 'test'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        query: {
-          presets: ['es2015'] 
+        options: {
+          presets: ['es2015', { "modules": false }] 
         }
       }
     ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    root: path.resolve(__dirname, root),
-    modulesDirectories: [
-      'node_modules',
+    modules: [
+      path.resolve('./src'),
+      path.resolve('./node_modules')
     ],
   }
 };

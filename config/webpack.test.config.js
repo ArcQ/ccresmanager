@@ -2,13 +2,13 @@ var config = {
   cache: true,
   devtool: 'inline-source-map',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /(bower_components|node_modules|generated)/,
         loader: 'babel-loader',
-        query: {
-          presets: ['es2015'],
+        options: {
+          presets: ['es2015', { "modules": false }],
           cacheDirectory: false,
         },
       },
