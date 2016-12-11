@@ -1,19 +1,20 @@
 class Calculator {
-  static add(op1, op2) {
-    return op1 + op2;
+  constructor(op1, op2) {
+    this.op1 = op1;
+    this.op2 = op2;
   }
-
-  static sub(op1, op2) {
-    return op1 - op2;
+  add() {
+    return this.op1 + this.op2;
   }
-
-  static mul(op1, op2) {
-    return op1 * op2;
+  sub() {
+    return this.op1 - this.op2;
   }
-
-  static div(op1, op2) {
-    return op1 / op2;
+  mul() {
+    return this.op1 * this.op2;
+  }
+  div() {
+    return this.op1 / this.op2;
   }
 }
 
-module.exports = Calculator;
+export default Calculator;
