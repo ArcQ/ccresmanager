@@ -1,3 +1,5 @@
+var path = require('path');
+
 var config = {
   entry: ['./src/manager/manager.js'],
   output: {
@@ -6,22 +8,24 @@ var config = {
     'library': 'ccresmanager'
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015'] 
-        }
-      }
-    ]
+        test: /\.js$/,
+        exclude: /(bower_components|node_modules|generated)/,
+        use:[{
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015'],
+            cacheDirectory: false,
+          }
+        }]
+      },
+    ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    root: path.resolve(__dirname, root),
-    modulesDirectories: [
-      'node_modules',
+    extensions: ['.js', '.jsx'],
+    modules: [
+      path.resolve('./node_modules')
     ],
   }
 };
