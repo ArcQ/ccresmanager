@@ -8,12 +8,12 @@
     "url": "https://github.com/ArcQ/webpack-template"
   },
   "scripts": {
-    "start": "rimraf build && NODE_ENV=dev NODE_ENV=dev webpack --watch --config ./config/webpack.config.js",
+    "start": "rimraf build && NODE_ENV=dev NODE_ENV=dev ./node_modules/webpack/bin/webpack.js --watch --config ./config/webpack.config.js",
     "lint": "node node_modules/eslint/bin/eslint.js .",
-    "test": "NODE_ENV=dev karma start ./config/karma.conf.js",
-    "dist": "npm run test:dist && rimraf dist && NODE_ENV=dist webpack --config ./config/webpack.config.js",
+    "test": "NODE_ENV=dev ./node_modules/karma/bin/karma start ./config/karma.conf.js",
+    "dist": "npm run test:dist && rimraf dist && NODE_ENV=dist ./node_modules/webpack/bin/webpack.js --config ./config/webpack.config.js",
     "release": "sh ./bin/release.sh",
-    "test:dist": "NODE_ENV=dist karma start --single-run --no-auto-watch config/karma.conf.js",
+    "test:dist": "NODE_ENV=dist ./node_modules/karma/bin/karma start --single-run --no-auto-watch config/karma.conf.js",
     "preversion": "git checkout master && git merge develop",
     "version": "npm run dist",
     "postversion": "git add -A && git push --tags && git push origin master && npm publish generated/dist"
@@ -64,7 +64,7 @@
     "rimraf": "^2.5.0",
     "sinon": "^1.17.6",
     "wait-until-promise": "^1.0.0",
-    "webpack": "^2.1.0-beta.21"
+    "webpack": "^2.1.0-beta.25"
   },
   "dependencies": {
     "cctestutils": "^1.0.6"
